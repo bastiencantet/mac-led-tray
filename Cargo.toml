@@ -1,0 +1,47 @@
+[package]
+name = "mac-led-tray"
+version = "0.1.0"
+edition = "2021"
+default-run = "mac-led-tray"
+
+[[bin]]
+name = "mac-led-tray"
+path = "src/main.rs"
+
+[[bin]]
+name = "led-helper"
+path = "src/bin/led-helper.rs"
+
+[dependencies]
+objc2 = "0.6"
+objc2-foundation = { version = "0.3", features = [
+    "NSString",
+    "NSGeometry",
+] }
+objc2-app-kit = { version = "0.3", features = [
+    "NSAlert",
+    "NSApplication",
+    "NSButton",
+    "NSCell",
+    "NSColor",
+    "NSControl",
+    "NSFont",
+    "NSImage",
+    "NSMenu",
+    "NSMenuItem",
+    "NSResponder",
+    "NSRunningApplication",
+    "NSSlider",
+    "NSStatusBar",
+    "NSStatusBarButton",
+    "NSStatusItem",
+    "NSSwitch",
+    "NSText",
+    "NSTextField",
+    "NSView",
+] }
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
