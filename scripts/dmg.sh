@@ -6,12 +6,12 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 APP_NAME="LED"
-VERSION="0.1.0"
+VERSION="${VERSION:-0.1.0}"
 APP_DIR="dist/${APP_NAME}.app"
 DMG_PATH="dist/${APP_NAME}-${VERSION}.dmg"
 STAGE_DIR="dist/dmg-stage"
 
-./scripts/bundle.sh
+VERSION="${VERSION}" ./scripts/bundle.sh
 
 echo "==> Staging dmg contents"
 rm -rf "${STAGE_DIR}"

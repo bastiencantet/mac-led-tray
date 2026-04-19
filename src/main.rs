@@ -1,3 +1,5 @@
+mod sparkle;
+
 use std::cell::RefCell;
 use std::io::{BufRead, BufReader, Write};
 use std::os::unix::fs::MetadataExt;
@@ -768,5 +770,9 @@ fn main() {
 
     *STATE.lock().unwrap() = Some(LedState::new());
     let _app = build_app(mtm);
+
+    // Kick off Sparkle auto-updates. Feed URL + public key are read from Info.plist.
+    sparkle::init();
+
     app.run();
 }
